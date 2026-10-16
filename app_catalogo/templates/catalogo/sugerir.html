@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+{% extends "catalogo/base.html" %}
+
+{% block titulo %}Sugerir Libro{% endblock %}
+
+{% block contenido %}
+    <h1>Sugerir un Libro</h1>
+    <p>¿Te gustaría que agreguemos un libro a la biblioteca? Escribe su título aquí:</p>
+
+
+    <form method="POST">
+        {% csrf_token %} 
+        
+        <label for="titulo">Título del libro:</label>
+        <input type="text" name="titulo" id="titulo" placeholder="Ej. Cien años de soledad">
+        
+        <button type="submit">Enviar sugerencia</button>
+    </form>
+
+    {% if mensaje %}
+        <p style="margin-top: 20px; font-weight: bold; color: #2c3e50;">
+            {{ mensaje }}
+        </p>
+    {% endif %}
+{% endblock %}
+</body>
+</html>

@@ -1,0 +1,20 @@
+<!-- catalogo/templates/catalogo/novedades.html -->
+{% extends "catalogo/base.html" %}
+
+{% block titulo %}Novedades{% endblock %}
+
+{% block contenido %}
+    <h1>Libros Novedades (Desde 2010 en adelante)</h1>
+    <ul>
+        {% for libro in libros_novedades %}
+            <li>
+                <a href="{% url 'catalogo:detalle_libro' libro.id %}">
+                    {{ libro.titulo }}
+                </a> - ({{ libro.anio }}) - <em>{{ libro.genero|capfirst }}</em>
+            </li>
+        {% empty %}
+            <li>No hay novedades registradas.</li>
+        {% endfor %}
+    </ul>
+    <p>Total de novedades: {{ libros_novedades|length }}</p>
+{% endblock %}

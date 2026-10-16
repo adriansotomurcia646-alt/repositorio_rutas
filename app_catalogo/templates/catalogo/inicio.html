@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- catalogo/templates/catalogo/inicio.html -->
+{% extends "catalogo/base.html" %}
+
+{% block titulo %}Inicio{% endblock %}
+
+{% block contenido %}
+    <h1>Bienvenido a {{ nombre_sitio }}</h1>
+    <p>Tenemos un total de {{ total }} libros en el catálogo.</p>
+    
+    <ul>
+        <li>Libros disponibles: <strong>{{ disponibles }}</strong></li>
+        <li>Libros prestados: <strong>{{ prestados }}</strong></li>
+    </ul>
+
+    {% if prestados == 0 %}
+        <p><strong>¡Todos los libros están en la biblioteca!</strong></p>
+    {% else %}
+        <p>Hay algunos libros circulando fuera de la biblioteca.</p>
+    {% endif %}
+{% endblock %}
+</body>
+</html>
